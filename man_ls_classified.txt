@@ -1,0 +1,233 @@
+命令分类 57
+
+    显示哪些条目 6
+        是否显示隐藏文件
+        是否仅显示目录
+        是否显示以~结尾的文件
+
+    如何显示条目 46
+        是否-l 9
+           如何显示时间 
+           是否显示作者
+           各种-l
+        如何排序 10
+        是否显示编号
+        是否显示颜色
+        是否显示文件大小
+        如何显示文件大小 4
+        如何显示文件名 10
+        如何显示软连接 3
+        整体排版如何 7
+
+    特殊命令 5
+        
+
+显示哪些条目 6
+
+    是否显示隐藏文件
+        -a, --all
+              do not ignore entries starting with .
+
+        -A, --almost-all
+              do not list implied . and ..
+
+        --hide=PATTERN
+              do not list implied entries matching shell  PATTERN  (overridden
+              by -a or -A)
+
+        -I, --ignore=PATTERN
+              do not list implied entries matching shell PATTERN
+
+    是否仅显示目录
+        -d, --directory
+              list directories themselves, not their contents
+              
+    是否显示以~结尾的文件
+         -B, --ignore-backups
+              do not list implied entries ending with ~
+
+
+如何显示条目 46
+
+    是否-l 9
+
+        如何显示时间
+        --full-time
+              like -l --time-style=full-iso 
+
+        --time-style=STYLE
+              with -l, show times using style STYLE: full-iso, long-iso,  iso,
+              locale,  or  +FORMAT;  FORMAT  is interpreted like in 'date'; if
+              FORMAT  is  FORMAT1<newline>FORMAT2,  then  FORMAT1  applies  to
+              non-recent  files  and FORMAT2 to recent files; if STYLE is pre‐
+              fixed with 'posix-', STYLE takes effect only outside  the  POSIX
+              locale     
+
+        是否显示作者
+        --author
+              with -l, print the author of each file
+
+
+        各种-l
+        -l     use a long listing format
+
+        --time=WORD
+              with -l, show time as WORD instead of default modification time:
+              atime  or  access  or  use  (-u); ctime or status (-c); also use
+              specified time as sort key if --sort=time (newest first)
+
+        -g    like -l, but do not list owner
+
+        -G, --no-group
+              in a long listing, don't print group names
+
+        -n, --numeric-uid-gid
+              like -l, but list numeric user and group IDs
+
+        -o    like -l, but do not list group information            
+
+    如何排序 10
+
+        -c    with -lt: sort by, and show, ctime (time of last modification of
+              file status information); with -l: show ctime and sort by  name;
+              otherwise: sort by ctime, newest first
+
+        --group-directories-first
+              group directories before files;
+
+              can   be  augmented  with  a  --sort  option,  but  any  use  of
+              --sort=none (-U) disables grouping
+
+        -r, --reverse
+              reverse order while sorting      
+
+        -S     sort by file size, largest first
+
+        -t     sort by modification time, newest first
+
+        -X     sort alphabetically by entry extension
+
+        --sort=WORD
+              sort  by  WORD instead of name: none (-U), size (-S), time (-t),
+              version (-v), extension (-X)  
+
+        -u     with  -lt:  sort by, and show, access time; with -l: show access
+              time and sort by name; otherwise: sort by  access  time,  newest
+              first
+
+        -U     do not sort; list entries in directory order
+
+        -v     natural sort of (version) numbers within text                
+
+    是否显示编号
+        -i, --inode
+              print the index number of each file
+
+    是否显示颜色
+        --color[=WHEN]
+              colorize  the output; WHEN can be 'always' (default if omitted),
+              'auto', or 'never'; more info below
+
+    是否显示文件大小
+        -s, --size
+              print the allocated size of each file, in blocks
+
+    如何显示文件大小 4
+        --block-size=SIZE
+              scale sizes by SIZE before printing them; e.g., '--block-size=M'
+              prints sizes in units of 1,048,576 bytes; see SIZE format below
+        
+        -h, --human-readable
+              with -l and/or -s, print human readable sizes (e.g., 1K 234M 2G)
+
+        --si   likewise, but use powers of 1000 not 1024
+
+        -k, --kibibytes
+              default to 1024-byte blocks for disk usage              
+              
+    如何显示文件名 10
+        -F, --classify
+              append indicator (one of */=>@|) to entries
+
+        --file-type
+              likewise, except do not append '*'
+
+        -p, --indicator-style=slash
+              append / indicator to directories
+
+        --indicator-style=WORD
+              append indicator with style WORD to entry names: none (default),
+              slash (-p), file-type (--file-type), classify (-F)
+
+        -b, --escape
+              print C-style escapes for nongraphic characters
+
+        -N, --literal
+              print raw entry names (don't treat e.g. control characters  spe‐
+              cially)      
+
+        -q, --hide-control-chars
+              print ? instead of nongraphic characters
+
+        --show-control-chars
+              show nongraphic characters as-is (the default, unless program is
+              'ls' and output is a terminal)
+
+        -Q, --quote-name
+              enclose entry names in double quotes
+
+        --quoting-style=WORD
+              use quoting style WORD for entry names: literal, locale,  shell,
+              shell-always, shell-escape, shell-escape-always, c, escape
+
+
+    如何显示软连接 3
+        -H, --dereference-command-line
+              follow symbolic links listed on the command line
+
+        --dereference-command-line-symlink-to-dir
+              follow each command line symbolic link
+
+              that points to a directory
+
+        -L, --dereference
+              when showing file information for a symbolic link, show informa‐
+              tion  for  the file the link references rather than for the link
+              itself
+                 
+    整体排版如何 7
+        --format=WORD
+              across -x, commas -m, horizontal -x, long -l, single-column  -1,
+              verbose -l, vertical -C
+
+        -m    fill width with a comma separated list of entries      
+    
+        -C    list entries by columns
+
+        -T, --tabsize=COLS
+              assume tab stops at each COLS instead of 8
+
+        -w, --width=COLS
+              set output width to COLS.  0 means no limit
+
+        -x    list entries by lines instead of by columns      
+
+        -1    list one file per line.  Avoid '\n' with -q or -b      
+
+
+特殊命令 5
+
+    -D, --dired
+        generate output designed for Emacs' dired mode
+
+    -f     
+        do not sort, enable -aU, disable -ls --color
+
+    -R, --recursive
+        list subdirectories recursively         
+
+    --help 
+        display this help and exit
+
+    --version
+        output version information and exit
