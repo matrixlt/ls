@@ -1,4 +1,4 @@
-命令分类 58
+命令分类 57
 
     显示哪些条目 6
         是否显示隐藏文件
@@ -19,11 +19,8 @@
         如何显示软连接 3
         整体排版如何 7
 
-    特殊命令 6
+    特殊命令 5
         
-
-
-
 
 显示哪些条目 6
 
@@ -90,6 +87,7 @@
         -o    like -l, but do not list group information            
 
     如何排序 10
+
         -c    with -lt: sort by, and show, ctime (time of last modification of
               file status information); with -l: show ctime and sort by  name;
               otherwise: sort by ctime, newest first
@@ -217,7 +215,7 @@
         -1    list one file per line.  Avoid '\n' with -q or -b      
 
 
-特殊命令 6
+特殊命令 5
 
     -D, --dired
         generate output designed for Emacs' dired mode
@@ -226,10 +224,7 @@
         do not sort, enable -aU, disable -ls --color
 
     -R, --recursive
-        list subdirectories recursively
-
-    -X     
-        sort alphabetically by entry extension          
+        list subdirectories recursively         
 
     --help 
         display this help and exit
