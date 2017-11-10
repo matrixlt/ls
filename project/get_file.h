@@ -21,15 +21,20 @@ typedef struct {
 
 }myfile;
 int count = 0;
-myfile   file[100];
+//myfile   file[100];
 
 
-void get_file( char file_path[]){
+void get_file( char file_path[],myfile file[]){
+    
+    
     DIR* dir;
     char str[256];
     char path[4096];
     struct dirent* rent;
     dir=opendir(file_path);
+    
+    if(dir==NULL)
+    return;
     
     struct stat file1;
     int test;
@@ -88,6 +93,8 @@ void get_file( char file_path[]){
         file[count].inode=file1.st_ino;
         file[count].isSLink=S_ISLNK(file1.st_mode);
         file[count].sec=file1.st_mtime;
+        
+        //count is not finished
         count++;    
     }
     closedir(dir);

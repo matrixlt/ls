@@ -9,12 +9,15 @@
 #include "get_file.h"
 
 
-void get_file(char file_path[]); 
+void get_file(char file_path[],myfile file[]); 
 void get_opt(int argc,char*argv[]);
 
 int main(int argc ,char*argv[]){
-    get_file(argv[1]);
+
+    myfile file[100];
+    get_file(argv[1],file);
     get_opt(argc,argv);
+    
     if(v_flag)
     {
         printf("0.001\n");
@@ -38,7 +41,7 @@ int main(int argc ,char*argv[]){
 }
 else {
     for(int i=0;i<count;i++)
-    printf("%s\t",file[i].name);
+    printf("%s,\t",file[i].name);
     printf("\n");
 }    
     return 0;
