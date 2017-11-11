@@ -11,6 +11,8 @@ stdio.h
 -
 time.h
 -
+string.h
+-
 get_file.h
 /home/matrixlt/git/ls/project/get_file.h
 

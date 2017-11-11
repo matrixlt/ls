@@ -30,14 +30,10 @@ typedef struct {
 
 }myfile;
 
-
-
-
 int count = 0;
-//myfile   file[100];
 
 
-int get_file( char file_path[],myfile file[]){
+int get_file( char file_path[],myfile **file){
     
     count = 0;
     DIR* dir;
@@ -97,26 +93,35 @@ int get_file( char file_path[],myfile file[]){
         else str1[9]='-';  
         struct tm *time1 = localtime(&file1.st_mtime);
 
-        strcpy(file[count].name,str);
-        strcpy(file[count].mode,str1);
-        file[count].uid=file1.st_uid;
-        file[count].gid=file1.st_gid;
-        file[count].size=file1.st_size;
-        file[count].hlink=file1.st_nlink;
-        file[count].time=*time1;
-        file[count].inode=file1.st_ino;
-        file[count].isSLink=S_ISLNK(file1.st_mode);
-        file[count].sec=file1.st_mtime;
-        file[count].last_changed=file1.st_ctime;
+        strcpy((*file)[count].name,str);
+        strcpy((*file)[count].mode,str1);
+        (*file)[count].uid=file1.st_uid;
+        (*file)[count].gid=file1.st_gid;
+        (*file)[count].size=file1.st_size;
+        (*file)[count].hlink=file1.st_nlink;
+        (*file)[count].time=*time1;
+        (*file)[count].inode=file1.st_ino;
+        (*file)[count].isSLink=S_ISLNK(file1.st_mode);
+        (*file)[count].sec=file1.st_mtime;
+        (*file)[count].last_changed=file1.st_ctime;
 
         
-        strcpy(file[count].u_name,getpwuid(file1.st_uid)->pw_name);
-        strcpy(file[count].g_name,getgrgid(file1.st_gid)->gr_name);
+        strcpy((*file)[count].u_name,getpwuid(file1.st_uid)->pw_name);
+        strcpy((*file)[count].g_name,getgrgid(file1.st_gid)->gr_name);
         
-        //count is not finished
-        count++;    
+        
+        count++;
+        if(count >= INISIZE)
+        {
+            INISIZE = INISIZE *2;
+            myfile* newfile = (myfile*)realloc(*file,INISIZE*sizeof(myfile));
+            *file = newfile;
+        }    
     }
     closedir(dir);
+
+
+    
     return 0;
 }
 

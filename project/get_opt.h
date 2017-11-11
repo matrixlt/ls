@@ -2,10 +2,10 @@
 #include <unistd.h>
 #include <getopt.h>
 
-
-
 #ifndef GET_OPT
 #define GET_OPT
+
+
 int l_flag=0;
 int v_flag=0;
 int g_flag=0;
@@ -15,12 +15,15 @@ int o_flag=0;
 int i_flag=0;
 int s_flag=0;
 int R_flag=0;
+int flag_2=0;
+
 struct option opts[]={
 {"version",0,NULL,'v'},
 {"no-group",0,NULL,'G'},
 {"numeric-uid-gid",0,NULL,'n'},
 {"inode",0,NULL,'i'},
-{"size",0,NULL,'s'}
+{"size",0,NULL,'s'},
+{"color", required_argument, NULL, '2'},
 };
 
 
@@ -45,6 +48,11 @@ void get_opt(int argc,char*argv[]){
             case 's': s_flag=1;
             break;
             case 'R': R_flag=1;
+            break;
+            case '2': 
+                if(strcmp(optarg, "always") == 0) {
+                    flag_2 = 1;
+                }
             break;
             default : break; 
         }

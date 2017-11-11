@@ -3,6 +3,8 @@
         "stdlib.h": "c",
         "dirent.h": "c",
         "time.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "display.h": "c",
+        "get_opt.h": "c"
     }
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "get_file.h"
 
 #ifndef DISPLAY
@@ -7,11 +8,11 @@
 
 void display(myfile file[])
 {
-if(v_flag)
-    {
-        printf("0.001\n");
-        return ;
-    }
+    if(v_flag)
+        {
+            printf("0.001\n");
+            return ;
+        }
 
     
     //printf("%d\n",l_flag);
@@ -19,24 +20,27 @@ if(v_flag)
     o_flag=1;
 
 
-    
-
-
-
-
-
     if(l_flag || g_flag || n_flag || o_flag)
-{
-    for(int i=0;i<count;i++){
+    {
+        for(int i=0;i<count;i++)
+    {
 
-        // if(R_flag && (file[count].mode[0] == 'd')
-        //           && (file[count].name !=  ".")
-        //           && (file[count].name != "..")
+        // printf("\n%d  %d  %d  %s:\n",R_flag,
+        //     strcmp(file[count].name ,"."),
+        //     strcmp(file[count].name ,".."),
+        //       file[count].name      
+        //     );
+
+        
+        // if(R_flag //&& (file[count].mode[0] == 'd')
+        //           && ( strcmp(file[count].name ,".") != 0  )
+        //           && ( strcmp(file[count].name ,"..") != 0)
         //   )
-    
+        
         // {
-        //     myfile filedir[100];
-        //     get_file(file[count].name,filedir);
+        //     myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
+        //     printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        //     get_file(file[count].name,&filedir);
         //     display(filedir);
         // }
 
@@ -68,26 +72,67 @@ if(v_flag)
         }
         
         printf("%5ld ",file[i].size);
-        printf("%d月 %d %d:%d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
-        printf("%s\n",file[i].name);
+        printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
+        
+        
+        
+        
+        
+        if(flag_2){
+            if(file[i].isSLink == 1){
+                printf("\x1b[0m\x1b[01;36m%s\x1b[0m\n", file[i].name);
+            }
+            else if(file[i].mode[0] == 'd'){
+                printf("\x1b[0m\x1b[01;34m%s\x1b[0m\n", file[i].name);
+            }
+            else if(file[i].mode[3] == 'x'){
+                printf("\x1b[0m\x1b[01;32m%s\x1b[0m\n", file[i].name);
+            }
+            else{
+                printf("%s\n",file[i].name);
+            }
+            
+        }
+            
+
+
     }
-}
-else {
-    for(int i=0;i<count;i++)
+    }
+    else {
+        for(int i=0;i<count;i++)
     {
-    if(i_flag)
-    printf("%d ",file[i].inode);
+        if(i_flag)
+        printf("%d ",file[i].inode);
 
 
 
-    if(s_flag)
-    printf("%5ld ",file[i].size);
+        if(s_flag)
+        printf("%5ld ",file[i].size);
 
-    printf("%s  ",file[i].name);
+
+
+if(flag_2){
+            if(file[i].isSLink == 1){
+                printf("\x1b[0m\x1b[01;36m%s\x1b[0m  ", file[i].name);
+            }
+            else if(file[i].mode[0] == 'd'){
+                printf("\x1b[0m\x1b[01;34m%s\x1b[0m  ", file[i].name);
+            }
+            else if(file[i].mode[3] == 'x'){
+                printf("\x1b[0m\x1b[01;32m%s\x1b[0m  ", file[i].name);
+            }
+            else{
+                printf("%s  ",file[i].name);
+            }
+            
+        }
+   
+        
+
     }
-    printf("\n");
-}    
-
+       printf("\n");
+       
+    }    
 
 }
 

@@ -5,9 +5,12 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <time.h>
+
+int INISIZE = 100;
 #include "get_opt.h"
 #include "get_file.h"
 #include "display.h"
+
 
 // int get_file(char file_path[],myfile file[]); 
 // void get_opt(int argc,char*argv[]);
@@ -15,21 +18,20 @@
 
 int main(int argc ,char*argv[]){
 
-    myfile file[100];
+    myfile *file = (myfile*)malloc(INISIZE*sizeof(myfile));
     get_opt(argc,argv);
-    //printf("%d  %d  \n",optind , argc);
+
     if(optind == argc)//default
         {
-            get_file(".",file);
-            display(file);
-            
+            get_file(".",&file);
+            display(file);    
         }
 
     for(int i = optind; i<argc; i++){
         
         if(argc - optind != 1)//more than one arguement
         {
-            if(get_file(argv[i],file) == 0)
+            if(get_file(argv[i],&file) == 0)
             {
                 printf("%s:\n",argv[i]);
                 display(file);
@@ -38,7 +40,7 @@ int main(int argc ,char*argv[]){
             else printf("%s is invalid\n",argv[i]);
         }
         else {//only one arguement
-            if(get_file(argv[i],file) == 0)
+            if(get_file(argv[i],&file) == 0)
             display(file);
             else printf("%s is invalid\n",argv[i]);
         }
