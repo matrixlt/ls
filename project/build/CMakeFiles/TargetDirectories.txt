@@ -1,0 +1,3 @@
+/home/matrixlt/git/ls/project/build/CMakeFiles/edit_cache.dir
+/home/matrixlt/git/ls/project/build/CMakeFiles/rebuild_cache.dir
+/home/matrixlt/git/ls/project/build/CMakeFiles/ls.dir

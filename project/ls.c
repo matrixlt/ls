@@ -7,42 +7,42 @@
 #include <time.h>
 #include "get_opt.h"
 #include "get_file.h"
+#include "display.h"
 
-
-void get_file(char file_path[],myfile file[]); 
-void get_opt(int argc,char*argv[]);
+// int get_file(char file_path[],myfile file[]); 
+// void get_opt(int argc,char*argv[]);
+//void display(myfile file[]);
 
 int main(int argc ,char*argv[]){
 
     myfile file[100];
-    get_file(argv[1],file);
     get_opt(argc,argv);
-    
-    if(v_flag)
-    {
-        printf("0.001\n");
-        return 0;
-    }
+    //printf("%d  %d  \n",optind , argc);
+    if(optind == argc)//default
+        {
+            get_file(".",file);
+            display(file);
+            
+        }
 
-    
-    //printf("%d\n",l_flag);
-
-    if(l_flag)
-{
-    for(int i=0;i<count;i++){
-        printf("%s  ",file[i].mode);
-        printf("%d ",file[i].hlink);
-        printf("uid:%d  ",file[i].uid);
-        printf("gid:%u  ",file[i].gid);
-        printf("size:%ld  ",file[i].size);
-        printf("%d %d %d:%d ",file[i].time->tm_mon+1,file[i].time->tm_mday,file[i].time->tm_hour,file[i].time->tm_min);
-        printf("%s\n",file[i].name);
+    for(int i = optind; i<argc; i++){
+        
+        if(argc - optind != 1)//more than one arguement
+        {
+            if(get_file(argv[i],file) == 0)
+            {
+                printf("%s:\n",argv[i]);
+                display(file);
+                printf("\n");
+            }
+            else printf("%s is invalid\n",argv[i]);
+        }
+        else {//only one arguement
+            if(get_file(argv[i],file) == 0)
+            display(file);
+            else printf("%s is invalid\n",argv[i]);
+        }
     }
-}
-else {
-    for(int i=0;i<count;i++)
-    printf("%s,\t",file[i].name);
-    printf("\n");
-}    
+    
     return 0;
 }

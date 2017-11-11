@@ -5,36 +5,50 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <time.h>
+#include <pwd.h>
+#include <grp.h>
+
+#ifndef GET_FILE
+#define GET_FILE
+
 typedef struct {
     char name[256];
 
     int   inode;
     int   uid;
+    char  u_name[256];
     int   gid;
+    char  g_name[256];
     int   hlink;
 
     char  mode[10];
     int   isSLink;
+    long  int last_changed; 
     long  int sec;
     long  int size;
-    struct tm *time;
+    struct tm time;
 
 }myfile;
+
+
+
+
 int count = 0;
 //myfile   file[100];
 
 
-void get_file( char file_path[],myfile file[]){
+int get_file( char file_path[],myfile file[]){
     
-    
+    count = 0;
     DIR* dir;
     char str[256];
     char path[4096];
     struct dirent* rent;
+    
     dir=opendir(file_path);
     
     if(dir==NULL)
-    return;
+    return -1;
     
     struct stat file1;
     int test;
@@ -89,13 +103,22 @@ void get_file( char file_path[],myfile file[]){
         file[count].gid=file1.st_gid;
         file[count].size=file1.st_size;
         file[count].hlink=file1.st_nlink;
-        file[count].time=time1;
+        file[count].time=*time1;
         file[count].inode=file1.st_ino;
         file[count].isSLink=S_ISLNK(file1.st_mode);
         file[count].sec=file1.st_mtime;
+        file[count].last_changed=file1.st_ctime;
+
+        
+        strcpy(file[count].u_name,getpwuid(file1.st_uid)->pw_name);
+        strcpy(file[count].g_name,getgrgid(file1.st_gid)->gr_name);
         
         //count is not finished
         count++;    
     }
     closedir(dir);
+    return 0;
 }
+
+
+#endif
