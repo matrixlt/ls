@@ -13,6 +13,7 @@
 
 typedef struct {
     char name[256];
+    char inwhat[4096];
 
     int   inode;
     int   uid;
@@ -40,12 +41,12 @@ int get_file( char file_path[],myfile **file){
     char str[256];
     char path[4096];
     struct dirent* rent;
-    
+    //printf("%s\n",file_path);
     dir=opendir(file_path);
     
     if(dir==NULL)
     return -1;
-    
+    //printf("open\n");
     struct stat file1;
     int test;
 
@@ -53,6 +54,9 @@ int get_file( char file_path[],myfile **file){
         strcpy(path,file_path);
         strcpy(str,rent->d_name);
         strcat(path,"/");
+
+        strcpy((*file)[count].inwhat,path);
+
         strcat(path,str);
         
         test=stat(path,&file1);

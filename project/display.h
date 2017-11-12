@@ -32,17 +32,25 @@ void display(myfile file[])
         //     );
 
         
-        // if(R_flag //&& (file[count].mode[0] == 'd')
-        //           && ( strcmp(file[count].name ,".") != 0  )
-        //           && ( strcmp(file[count].name ,"..") != 0)
-        //   )
+        if(R_flag && (file[i].mode[0] == 'd')
+                  && ( strcmp(file[i].name ,".") != 0  )
+                  && ( strcmp(file[i].name ,"..") != 0)
+          )
         
-        // {
-        //     myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
-        //     printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        //     get_file(file[count].name,&filedir);
-        //     display(filedir);
-        // }
+        {
+            //printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
+            char *temp = strcat(file[i].inwhat,file[i].name);
+            //printf("%s  %d\n",temp,strlen(temp));
+            printf("%s:\n",temp);
+            int save=count;
+            get_file(temp,&filedir);
+
+            //printf("%d %d\n",filedir[0].uid,filedir[1].uid);
+            display(filedir);
+            count=save;
+            printf("\n");
+        }
 
 
         if(i_flag)
@@ -52,7 +60,18 @@ void display(myfile file[])
         printf("%5ld ",file[i].size);
 
 
-        printf("%s ",file[i].mode);
+        //printf("%s ",file[i].mode);
+        int len=strlen(file[i].mode);
+        for(int j=0;j<len;j++){
+            if(file[i].mode[j]=='-' || file[i].mode[j]=='d'
+            ||file[i].mode[j]=='r'||file[i].mode[j]=='w'
+            ||file[i].mode[j]=='x')
+            printf("%c",file[i].mode[j]);
+        }
+        printf("  ");
+        //printf("  %d",len);
+
+
         printf("%d ",file[i].hlink);
 
         //printf("uid:%d  ",file[i].uid);
@@ -93,6 +112,8 @@ void display(myfile file[])
             }
             
         }
+
+        else printf("%s\n",file[i].name);
             
 
 
@@ -101,6 +122,33 @@ void display(myfile file[])
     else {
         for(int i=0;i<count;i++)
     {
+
+        
+        
+        
+        
+        if(R_flag && (file[i].mode[0] == 'd')
+                  && ( strcmp(file[i].name ,".") != 0  )
+                  && ( strcmp(file[i].name ,"..") != 0)
+          )
+        
+        {
+            //printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
+            char *temp = strcat(file[i].inwhat,file[i].name);
+            //printf("%s  %d\n",temp,strlen(temp));
+            printf("%s:\n",temp);
+            int save=count;
+            get_file(temp,&filedir);
+
+            //printf("%d %d\n",filedir[0].uid,filedir[1].uid);
+            display(filedir);
+            count=save;
+            printf("\n");
+        }
+
+
+
         if(i_flag)
         printf("%d ",file[i].inode);
 
@@ -111,7 +159,7 @@ void display(myfile file[])
 
 
 
-if(flag_2){
+        if(flag_2){
             if(file[i].isSLink == 1){
                 printf("\x1b[0m\x1b[01;36m%s\x1b[0m  ", file[i].name);
             }
@@ -127,7 +175,7 @@ if(flag_2){
             
         }
    
-        
+        else     printf("%s  ",file[i].name);
 
     }
        printf("\n");
