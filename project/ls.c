@@ -5,12 +5,14 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <time.h>
-
 int INISIZE = 100;
+
 #include "get_opt.h"
 #include "get_file.h"
 #include "display.h"
-
+#include "sort.h"
+#include "hidefile.h"
+#include "filename.h"
 
 // int get_file(char file_path[],myfile file[]); 
 // void get_opt(int argc,char*argv[]);
@@ -24,6 +26,9 @@ int main(int argc ,char*argv[]){
     if(optind == argc)//default
         {
             get_file(".",&file);
+            hidefile(file);
+            sort(file);
+            filename(file);
             display(file);    
         }
 
@@ -32,8 +37,11 @@ int main(int argc ,char*argv[]){
         if(argc - optind != 1)//more than one arguement
         {
             if(get_file(argv[i],&file) == 0)
-            {
+            {   
                 printf("%s:\n",argv[i]);
+                hidefile(file);
+                sort(file);
+                filename(file);
                 display(file);
                 printf("\n");
             }
@@ -41,7 +49,10 @@ int main(int argc ,char*argv[]){
         }
         else {//only one arguement
             if(get_file(argv[i],&file) == 0)
-            display(file);
+            {   hidefile(file);
+                sort(file);
+                filename(file);
+                display(file);}
             else printf("%s is invalid\n",argv[i]);
         }
     }

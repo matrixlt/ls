@@ -16,6 +16,18 @@ string.h
 get_file.h
 /home/matrixlt/git/ls/project/get_file.h
 
+/home/matrixlt/git/ls/project/filename.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+get_opt.h
+/home/matrixlt/git/ls/project/get_opt.h
+get_file.h
+/home/matrixlt/git/ls/project/get_file.h
+
 /home/matrixlt/git/ls/project/get_file.h
 stdio.h
 -
@@ -44,6 +56,18 @@ unistd.h
 getopt.h
 -
 
+/home/matrixlt/git/ls/project/hidefile.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+get_opt.h
+/home/matrixlt/git/ls/project/get_opt.h
+get_file.h
+/home/matrixlt/git/ls/project/get_file.h
+
 /home/matrixlt/git/ls/project/ls.c
 stdio.h
 -
@@ -65,4 +89,22 @@ get_file.h
 /home/matrixlt/git/ls/project/get_file.h
 display.h
 /home/matrixlt/git/ls/project/display.h
+sort.h
+/home/matrixlt/git/ls/project/sort.h
+hidefile.h
+/home/matrixlt/git/ls/project/hidefile.h
+filename.h
+/home/matrixlt/git/ls/project/filename.h
+
+/home/matrixlt/git/ls/project/sort.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+get_file.h
+/home/matrixlt/git/ls/project/get_file.h
+get_opt.h
+/home/matrixlt/git/ls/project/get_opt.h
 
