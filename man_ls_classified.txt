@@ -22,7 +22,7 @@
     特殊命令 4
         
 
-显示哪些条目 6
+显示哪些条目 6 -2
 
     是否显示隐藏文件
         -a, --all
@@ -35,11 +35,11 @@
               do not list implied entries matching shell  PATTERN  (overridden
               by -a or -A)
 
-        -I, --ignore=PATTERN
+        //-I, --ignore=PATTERN
               do not list implied entries matching shell PATTERN
 
     是否仅显示目录
-        -d, --directory
+        //-d, --directory
               list directories themselves, not their contents
               
     是否显示以~结尾的文件
@@ -47,15 +47,15 @@
               do not list implied entries ending with ~
 
 
-如何显示条目 47
+如何显示条目 47 -22
 
     是否-l 9
 
         如何显示时间
-        --full-time
+        //--full-time
               like -l --time-style=full-iso 
 
-        --time-style=STYLE
+        //--time-style=STYLE
               with -l, show times using style STYLE: full-iso, long-iso,  iso,
               locale,  or  +FORMAT;  FORMAT  is interpreted like in 'date'; if
               FORMAT  is  FORMAT1<newline>FORMAT2,  then  FORMAT1  applies  to
@@ -64,14 +64,14 @@
               locale     
 
         是否显示作者
-        --author
+        //--author
               with -l, print the author of each file
 
 
         各种-l
         -l     use a long listing format
 
-        --time=WORD
+        //--time=WORD
               with -l, show time as WORD instead of default modification time:
               atime  or  access  or  use  (-u); ctime or status (-c); also use
               specified time as sort key if --sort=time (newest first)
@@ -134,7 +134,7 @@
         -s, --size
               print the allocated size of each file, in blocks
 
-    如何显示文件大小 4
+    //如何显示文件大小 4
         --block-size=SIZE
               scale sizes by SIZE before printing them; e.g., '--block-size=M'
               prints sizes in units of 1,048,576 bytes; see SIZE format below
@@ -161,29 +161,29 @@
               append indicator with style WORD to entry names: none (default),
               slash (-p), file-type (--file-type), classify (-F)
 
-        -b, --escape
+        //-b, --escape
               print C-style escapes for nongraphic characters
 
         -N, --literal
               print raw entry names (don't treat e.g. control characters  spe‐
               cially)      
 
-        -q, --hide-control-chars
+        //-q, --hide-control-chars
               print ? instead of nongraphic characters
 
-        --show-control-chars
+        //--show-control-chars
               show nongraphic characters as-is (the default, unless program is
               'ls' and output is a terminal)
 
         -Q, --quote-name
               enclose entry names in double quotes
 
-        --quoting-style=WORD
+        //--quoting-style=WORD
               use quoting style WORD for entry names: literal, locale,  shell,
               shell-always, shell-escape, shell-escape-always, c, escape
 
 
-    如何显示软连接 3
+    //如何显示软连接 3
         -H, --dereference-command-line
               follow symbolic links listed on the command line
 
@@ -197,7 +197,7 @@
               tion  for  the file the link references rather than for the link
               itself
                  
-    整体排版如何 7
+   // 整体排版如何 7
         --format=WORD
               across -x, commas -m, horizontal -x, long -l, single-column  -1,
               verbose -l, vertical -C
@@ -217,12 +217,12 @@
         -1    list one file per line.  Avoid '\n' with -q or -b      
 
 
-特殊命令 4
+特殊命令 4 -2
 
-    -D, --dired
+    //-D, --dired
         generate output designed for Emacs' dired mode
 
-    -R, --recursive
+    //-R, --recursive
         list subdirectories recursively         
 
     --help 
