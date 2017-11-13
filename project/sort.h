@@ -55,7 +55,7 @@
     if(l_flag==1&&t_flag==0){
          for(i=0;i<number;++i){
             for(j=i+1;j<number;++j){
-                if(file[i].name[0]>file[j].name[0]){
+                if(strcasecmp(file[i].name,file[j].name) > 0){
                 temp=file[i];
                 file[i]=file[j];
                 file[j]=temp;
@@ -81,7 +81,8 @@
     myfile temp;
     char EntryExtension[count][256];
     for(i=0;i<number;i++){
-        for(j=0;file[i].name[j]!='.';j++);
+        for(j=0;file[i].name[j]!='.';j++)
+            ;
         for(x=0;file[i].name[j]!='\0';x++,j++){
             EntryExtension[i][x]=file[i].name[j];
             printf("%c",EntryExtension[i][x]);

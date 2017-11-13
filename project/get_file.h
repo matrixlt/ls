@@ -7,7 +7,7 @@
 #include <time.h>
 #include <pwd.h>
 #include <grp.h>
-
+#include "get_opt.h"
 #ifndef GET_FILE
 #define GET_FILE
 
@@ -51,6 +51,7 @@ int get_file( char file_path[],myfile **file){
     int test;
 
     while((rent=readdir(dir))){
+
         strcpy(path,file_path);
         strcpy(str,rent->d_name);
         strcat(path,"/");
@@ -58,6 +59,29 @@ int get_file( char file_path[],myfile **file){
         strcpy((*file)[count].inwhat,path);
 
         strcat(path,str);
+
+        if(a_flag == 1)//hide specific file
+        {
+            
+        }
+        else  {
+            if(A_flag == 1)
+            {
+                if(strcmp(str ,".") == 0  ||strcmp(str ,"..") == 0)
+                continue;
+            }else {
+                if(str[0]=='.')
+                continue;
+            }
+        }
+
+        if(B_flag == 1){
+            int length=strlen(str);
+            if(str[length-1]=='~')
+            continue;
+        }
+
+        
         
         test=stat(path,&file1);
         //printf("%d%s\n",test,path);

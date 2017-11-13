@@ -11,7 +11,6 @@ int INISIZE = 100;
 #include "get_file.h"
 #include "display.h"
 #include "sort.h"
-#include "hidefile.h"
 #include "filename.h"
 
 // int get_file(char file_path[],myfile file[]); 
@@ -26,7 +25,6 @@ int main(int argc ,char*argv[]){
     if(optind == argc)//default
         {
             get_file(".",&file);
-            hidefile(file);
             sort(file);
             filename(file);
             display(file);    
@@ -39,7 +37,6 @@ int main(int argc ,char*argv[]){
             if(get_file(argv[i],&file) == 0)
             {   
                 printf("%s:\n",argv[i]);
-                hidefile(file);
                 sort(file);
                 filename(file);
                 display(file);
@@ -49,7 +46,7 @@ int main(int argc ,char*argv[]){
         }
         else {//only one arguement
             if(get_file(argv[i],&file) == 0)
-            {   hidefile(file);
+            {   
                 sort(file);
                 filename(file);
                 display(file);}

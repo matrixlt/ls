@@ -8,31 +8,25 @@
 
 void display(myfile file[])
 {
-    if(v_flag)
+    if(version_flag)//show version and return
         {
             printf("0.001\n");
             return ;
         }
 
     
-    //printf("%d\n",l_flag);
-    if(G_flag && l_flag)
+    
+    if(G_flag && l_flag)//-Gl == -o
     o_flag=1;
 
 
     if(l_flag || g_flag || n_flag || o_flag)
     {
-        for(int i=0;i<count;i++)
+        for(int i=0;i<count;i++)//long format
     {
 
-        // printf("\n%d  %d  %d  %s:\n",R_flag,
-        //     strcmp(file[count].name ,"."),
-        //     strcmp(file[count].name ,".."),
-        //       file[count].name      
-        //     );
-
-        
-        if(R_flag && (file[i].mode[0] == 'd')
+            
+        if(R_flag && (file[i].mode[0] == 'd')//-R unfinished
                   && ( strcmp(file[i].name ,".") != 0  )
                   && ( strcmp(file[i].name ,"..") != 0)
           )
@@ -52,16 +46,21 @@ void display(myfile file[])
             printf("\n");
         }
 
+        
 
-        if(i_flag)
+
+
+
+
+        if(i_flag)//show the inode of the file
         printf("%d ",file[i].inode);
 
-        if(s_flag)
+        if(s_flag)//show the size of the file
         printf("%5ld ",file[i].size);
 
 
         //printf("%s ",file[i].mode);
-        int len=strlen(file[i].mode);
+        int len=strlen(file[i].mode);//show mode of the file
         for(int j=0;j<len;j++){
             if(file[i].mode[j]=='-' || file[i].mode[j]=='d'
             ||file[i].mode[j]=='r'||file[i].mode[j]=='w'
@@ -72,10 +71,10 @@ void display(myfile file[])
         //printf("  %d",len);
 
 
-        printf("%d ",file[i].hlink);
+        printf("%d ",file[i].hlink);//show the number of hard links
 
         //printf("uid:%d  ",file[i].uid);
-        if(!g_flag)
+        if(!g_flag)//show the name or number of the owner
         {
             if(!n_flag)
             printf("%s ",file[i].u_name);
@@ -83,21 +82,21 @@ void display(myfile file[])
         }
         
         //printf("gid:%u  ",file[i].gid);
-        if(!o_flag){
+        if(!o_flag){////show the name or number of the group
             if(!n_flag)
             printf("%s ",file[i].g_name);
             else printf("%u ",file[i].gid);
     
         }
         
-        printf("%5ld ",file[i].size);
+        printf("%5ld ",file[i].size);//show the size of the file
         printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
+        //show time of the file
         
         
         
         
-        
-        if(flag_2){
+        if(flag_2){//show name of the file
             if(file[i].isSLink == 1){
                 printf("\x1b[0m\x1b[01;36m%s\x1b[0m\n", file[i].name);
             }
@@ -119,14 +118,11 @@ void display(myfile file[])
 
     }
     }
-    else {
+    else {// short format
         for(int i=0;i<count;i++)
-    {
+    {   
 
-        
-        
-        
-        
+       
         if(R_flag && (file[i].mode[0] == 'd')
                   && ( strcmp(file[i].name ,".") != 0  )
                   && ( strcmp(file[i].name ,"..") != 0)
