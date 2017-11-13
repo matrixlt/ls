@@ -144,10 +144,27 @@ void sort_v(myfile file[],int number){
         }
 }//natural sort of size
 
-
+void default_sort(myfile file[]){
+    myfile temp;
+    int i,j;
+    
+    for(i=0;i<count;++i){
+        for(j=i+1;j<count;++j){
+            if(strcasecmp(file[i].name,file[j].name) > 0){
+                temp=file[i];
+                file[i]=file[j];
+                file[j]=temp;
+            }
+        }
+    } //sort by name
+    
+}
 
 
 void sort(myfile file[]){
+
+
+    default_sort(file);
 
     if(r_flag){sort_r(file,count);}
    

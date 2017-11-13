@@ -5,9 +5,10 @@
 #ifndef GET_OPT
 #define GET_OPT
 
-
-int l_flag=0;
 int version_flag=0;
+int help_flag=0;
+//-l in different type
+int l_flag=0;
 int g_flag=0;
 int G_flag=0;
 int n_flag=0;
@@ -15,7 +16,7 @@ int o_flag=0;
 int i_flag=0;
 int s_flag=0;
 int R_flag=0;
-int flag_2=0;
+int flag_2=1;
 
 //sort 
 int r_flag=0;
@@ -53,7 +54,8 @@ struct option opts[]={
 {"sort",1,NULL,'8'},
 {"file-type",0,&filetype_flag,1},
 {"indicator-style",1,NULL,'7'},
-{"hide",1,NULL,'6'}
+{"hide",1,NULL,'6'},
+{"help",0,&help_flag,1}
 };
 
 
@@ -80,11 +82,11 @@ void get_opt(int argc,char*argv[]){
             case 'R': R_flag=1;
             break;
             case '2': 
-                if(strcmp(optarg, "always") == 0) {
-                    flag_2 = 1;
+                if(strcmp(optarg, "never") == 0) {
+                    flag_2 = 0;
                 }
             break;
-//          get_opt.h sort.h 
+
             //sort
             case 'r':r_flag=1;
             break;

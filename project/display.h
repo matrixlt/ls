@@ -2,7 +2,7 @@
 #include <time.h>
 #include <string.h>
 #include "get_file.h"
-
+#include "help.h"
 #ifndef DISPLAY
 #define DISPLAY
 
@@ -14,6 +14,10 @@ void display(myfile file[])
             return ;
         }
 
+    if(help_flag){
+        help();
+        return;
+    }
     
     
     if(G_flag && l_flag)//-Gl == -o
