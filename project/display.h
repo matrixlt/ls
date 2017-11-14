@@ -3,6 +3,7 @@
 #include <string.h>
 #include "get_file.h"
 #include "help.h"
+
 #ifndef DISPLAY
 #define DISPLAY
 
@@ -14,7 +15,7 @@ void display(myfile file[])
             return ;
         }
 
-    if(help_flag){
+    if(help_flag){//show help and return
         help();
         return;
     }
@@ -28,33 +29,7 @@ void display(myfile file[])
     {
         for(int i=0;i<count;i++)//long format
     {
-
-            
-        if(R_flag && (file[i].mode[0] == 'd')//-R unfinished
-                  && ( strcmp(file[i].name ,".") != 0  )
-                  && ( strcmp(file[i].name ,"..") != 0)
-          )
         
-        {
-            //printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
-            char *temp = strcat(file[i].inwhat,file[i].name);
-            //printf("%s  %d\n",temp,strlen(temp));
-            printf("%s:\n",temp);
-            int save=count;
-            get_file(temp,&filedir);
-
-            //printf("%d %d\n",filedir[0].uid,filedir[1].uid);
-            display(filedir);
-            count=save;
-            printf("\n");
-        }
-
-        
-
-
-
-
 
         if(i_flag)//show the inode of the file
         printf("%d ",file[i].inode);
@@ -92,7 +67,7 @@ void display(myfile file[])
             else printf("%u ",file[i].gid);
     
         }
-        
+        if(R_flag==0)
         printf("%5ld ",file[i].size);//show the size of the file
         printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
         //show time of the file
@@ -127,28 +102,6 @@ void display(myfile file[])
     {   
 
        
-        if(R_flag && (file[i].mode[0] == 'd')
-                  && ( strcmp(file[i].name ,".") != 0  )
-                  && ( strcmp(file[i].name ,"..") != 0)
-          )
-        
-        {
-            //printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            myfile *filedir = (myfile*)malloc(INISIZE*sizeof(myfile));
-            char *temp = strcat(file[i].inwhat,file[i].name);
-            //printf("%s  %d\n",temp,strlen(temp));
-            printf("%s:\n",temp);
-            int save=count;
-            get_file(temp,&filedir);
-
-            //printf("%d %d\n",filedir[0].uid,filedir[1].uid);
-            display(filedir);
-            count=save;
-            printf("\n");
-        }
-
-
-
         if(i_flag)
         printf("%d ",file[i].inode);
 

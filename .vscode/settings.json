@@ -6,5 +6,7 @@
         "stdio.h": "c",
         "display.h": "c",
         "get_opt.h": "c"
-    }
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled"
 }

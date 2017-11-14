@@ -30,6 +30,20 @@ get_opt.h
 get_file.h
 /home/matrixlt/git/ls/project/get_file.h
 
+/home/matrixlt/git/ls/project/get_dir_R.h
+stdio.h
+-
+stdlib.h
+-
+dirent.h
+-
+string.h
+-
+sys/stat.h
+-
+unistd.h
+-
+
 /home/matrixlt/git/ls/project/get_file.h
 stdio.h
 -
@@ -91,6 +105,8 @@ sort.h
 /home/matrixlt/git/ls/project/sort.h
 filename.h
 /home/matrixlt/git/ls/project/filename.h
+get_dir_R.h
+/home/matrixlt/git/ls/project/get_dir_R.h
 
 /home/matrixlt/git/ls/project/sort.h
 stdio.h

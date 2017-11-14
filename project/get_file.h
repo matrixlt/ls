@@ -147,8 +147,6 @@ int get_file( char file_path[],myfile **file){
         }    
     }
     closedir(dir);
-
-
     
     return 0;
 }

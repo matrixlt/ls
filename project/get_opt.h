@@ -7,6 +7,7 @@
 
 int version_flag=0;
 int help_flag=0;
+
 //-l in different type
 int l_flag=0;
 int g_flag=0;
@@ -34,8 +35,6 @@ int a_flag=0;
 int A_flag=0;
 int B_flag=0;
 
-
-
 //filename
 int F_flag=0;
 int p_flag=0;
@@ -44,7 +43,7 @@ int Q_flag=0;
 int filetype_flag=0;
 
 struct option opts[]={
-{"version",0,NULL,'9'},
+{"version",0,&version_flag,1},
 {"no-group",0,NULL,'G'},
 {"numeric-uid-gid",0,NULL,'n'},
 {"inode",0,NULL,'i'},
@@ -63,9 +62,8 @@ void get_opt(int argc,char*argv[]){
     int c;
     while((c = getopt_long(argc,argv,"lgGnoisRrtcXUuSvaABFpQN",opts,NULL) ) !=-1){
         switch(c){
+            //-l in different type
             case 'l': l_flag=1;
-            break;
-            case '9': version_flag=1;
             break;
             case 'g': g_flag=1;
             break;
@@ -81,7 +79,7 @@ void get_opt(int argc,char*argv[]){
             break;
             case 'R': R_flag=1;
             break;
-            case '2': 
+            case '2': //color
                 if(strcmp(optarg, "never") == 0) {
                     flag_2 = 0;
                 }

@@ -3,6 +3,7 @@
 
 CMakeFiles/ls.dir/ls.c.o: ../display.h
 CMakeFiles/ls.dir/ls.c.o: ../filename.h
+CMakeFiles/ls.dir/ls.c.o: ../get_dir_R.h
 CMakeFiles/ls.dir/ls.c.o: ../get_file.h
 CMakeFiles/ls.dir/ls.c.o: ../get_opt.h
 CMakeFiles/ls.dir/ls.c.o: ../help.h

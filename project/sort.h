@@ -7,8 +7,6 @@
 #ifndef SORT
 #define SORT
 
-
-
  void sort_r(myfile file[],int number){
      int i=0;
      int j=number-1;
