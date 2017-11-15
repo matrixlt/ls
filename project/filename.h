@@ -54,7 +54,7 @@ void filename_Q(myfile file[],int count){
     }
 }
 
-void filename(myfile file[]){
+void filename(myfile file[],int count){
 	if(filetype_flag)filename_filetype(file,count);
 	if(Q_flag)filename_Q(file,count);
 	if(F_flag)filename_F(file,count);

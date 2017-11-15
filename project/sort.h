@@ -142,7 +142,7 @@ void sort_v(myfile file[],int number){
         }
 }//natural sort of size
 
-void default_sort(myfile file[]){
+void default_sort(myfile file[],int count){
     myfile temp;
     int i,j;
     
@@ -159,10 +159,11 @@ void default_sort(myfile file[]){
 }
 
 
-void sort(myfile file[]){
+void sort(myfile file[],int count)
+{
 
 
-    default_sort(file);
+    default_sort(file,count);
 
     if(r_flag){sort_r(file,count);}
    
