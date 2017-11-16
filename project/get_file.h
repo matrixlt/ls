@@ -7,10 +7,13 @@
 #include <time.h>
 #include <pwd.h>
 #include <grp.h>
+
 #include "get_opt.h"
+
+
 #ifndef GET_FILE
 #define GET_FILE
-
+int INISIZE = 100;
 typedef struct {
     char name[256];
     char inwhat[4096];

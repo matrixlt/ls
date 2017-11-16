@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <dirent.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <time.h>
-int INISIZE = 100;
+
 
 #include "get_opt.h"
 #include "get_file.h"
@@ -13,9 +8,7 @@ int INISIZE = 100;
 #include "sort.h"
 #include "filename.h"
 #include "get_dir_R.h"
-// int get_file(char file_path[],myfile file[]); 
-// void get_opt(int argc,char*argv[]);
-//void display(myfile file[]);
+
 
 int main(int argc ,char*argv[]){
 

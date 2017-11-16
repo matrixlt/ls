@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <unistd.h>
 #include <getopt.h>
+#include <string.h>
+
 
 #ifndef GET_OPT
 #define GET_OPT

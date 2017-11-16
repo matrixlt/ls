@@ -19,10 +19,6 @@ help.h
 /home/matrixlt/git/ls/project/help.h
 
 /home/matrixlt/git/ls/project/filename.h
-stdio.h
--
-stdlib.h
--
 string.h
 -
 get_opt.h
@@ -40,8 +36,6 @@ dirent.h
 string.h
 -
 sys/stat.h
--
-unistd.h
 -
 
 /home/matrixlt/git/ls/project/get_file.h
@@ -67,11 +61,9 @@ get_opt.h
 /home/matrixlt/git/ls/project/get_opt.h
 
 /home/matrixlt/git/ls/project/get_opt.h
-stdio.h
--
-unistd.h
--
 getopt.h
+-
+string.h
 -
 
 /home/matrixlt/git/ls/project/help.h
@@ -84,16 +76,6 @@ stdlib.h
 stdio.h
 -
 stdlib.h
--
-dirent.h
--
-string.h
--
-sys/stat.h
--
-unistd.h
--
-time.h
 -
 get_opt.h
 /home/matrixlt/git/ls/project/get_opt.h

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+
 #include "get_file.h"
 #include "help.h"
 
@@ -9,19 +10,22 @@
 
 void display(myfile file[])
 {
-    if(version_flag)//show version and return
+    //show version and return
+    if(version_flag)
         {
             printf("0.001\n");
             return ;
         }
 
-    if(help_flag){//show help and return
+
+    //show help and return
+    if(help_flag){
         help();
         return;
     }
     
-    
-    if(G_flag && l_flag)//-Gl == -o
+    //-Gl == -o
+    if(G_flag && l_flag)
     o_flag=1;
 
 
@@ -31,15 +35,17 @@ void display(myfile file[])
     {
         
 
-        if(i_flag)//show the inode of the file
+        //show the inode of the file
+        if(i_flag)
         printf("%d ",file[i].inode);
-
-        if(s_flag)//show the size of the file
+        
+        //show the size of the file
+        if(s_flag)
         printf("%5ld ",file[i].size);
 
-
+        //show mode of the file       
         //printf("%s ",file[i].mode);
-        int len=strlen(file[i].mode);//show mode of the file
+        int len=strlen(file[i].mode);
         for(int j=0;j<len;j++){
             if(file[i].mode[j]=='-' || file[i].mode[j]=='d'
             ||file[i].mode[j]=='r'||file[i].mode[j]=='w'
@@ -47,51 +53,41 @@ void display(myfile file[])
             printf("%c",file[i].mode[j]);
         }
         printf("  ");
-        //printf("  %d",len);
+        
+
+        //show the number of hard links
+        printf("%d ",file[i].hlink);
 
 
-        printf("%d ",file[i].hlink);//show the number of hard links
-
+        //show the name or number of the owner
         //printf("uid:%d  ",file[i].uid);
-        if(!g_flag)//show the name or number of the owner
+        if(!g_flag)
         {
             if(!n_flag)
             printf("%s ",file[i].u_name);
             else printf("%d ",file[i].uid);
         }
         
+
+        //show the name or number of the group
         //printf("gid:%u  ",file[i].gid);
-        if(!o_flag){////show the name or number of the group
+        if(!o_flag){
             if(!n_flag)
             printf("%s ",file[i].g_name);
             else printf("%u ",file[i].gid);
     
         }
-        if(R_flag==0)
-        printf("%5ld ",file[i].size);//show the size of the file
-        printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
-        //show time of the file
-        
-        
-        
-        
-        if(flag_2){//show name of the file
-            if(file[i].isSLink == 1){
-                printf("\x1b[0m\x1b[01;36m%s\x1b[0m\n", file[i].name);
-            }
-            else if(file[i].mode[0] == 'd'){
-                printf("\x1b[0m\x1b[01;34m%s\x1b[0m\n", file[i].name);
-            }
-            else if(file[i].mode[3] == 'x'){
-                printf("\x1b[0m\x1b[01;32m%s\x1b[0m\n", file[i].name);
-            }
-            else{
-                printf("%s\n",file[i].name);
-            }
-            
-        }
 
-        else printf("%s\n",file[i].name);
+        //show the size of the file
+        if(R_flag==0)
+        printf("%5ld ",file[i].size);
+
+        //show time of the file
+        printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
+        
+        
+        //show the name of the file
+        printf("%s\n",file[i].name);
             
 
 
@@ -101,34 +97,18 @@ void display(myfile file[])
         for(int i=0;i<count;i++)
     {   
 
-       
+        //show the inode of the file
         if(i_flag)
         printf("%d ",file[i].inode);
 
 
-
+        //show the size of the file
         if(s_flag)
         printf("%5ld ",file[i].size);
 
 
-
-        if(flag_2){
-            if(file[i].isSLink == 1){
-                printf("\x1b[0m\x1b[01;36m%s\x1b[0m  ", file[i].name);
-            }
-            else if(file[i].mode[0] == 'd'){
-                printf("\x1b[0m\x1b[01;34m%s\x1b[0m  ", file[i].name);
-            }
-            else if(file[i].mode[3] == 'x'){
-                printf("\x1b[0m\x1b[01;32m%s\x1b[0m  ", file[i].name);
-            }
-            else{
-                printf("%s  ",file[i].name);
-            }
-            
-        }
-   
-        else     printf("%s  ",file[i].name);
+        //show the name of the file
+        printf("%s  ",file[i].name);
 
     }
        printf("\n");

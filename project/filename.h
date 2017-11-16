@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+
 #include "get_opt.h"
 #include "get_file.h"
 
@@ -54,11 +53,46 @@ void filename_Q(myfile file[],int count){
     }
 }
 
+void add_color(myfile file[], int count){
+    for(int i=0;i<count ;i++){
+        
+        if(file[i].isSLink == 1){
+            char pre[256]="\x1b[0m\x1b[01;36m";
+            char post[256]="\x1b[0m";
+
+            char *temp = strcat(pre,file[i].name);
+            strcat(temp, post);
+            strcpy(file[i].name,temp);
+        }
+        else if(file[i].mode[0] == 'd'){
+            char pre[256]="\x1b[0m\x1b[01;34m";
+            char post[256]="\x1b[0m";
+
+            char *temp = strcat(pre,file[i].name);
+            strcat(temp, post);
+            strcpy(file[i].name,temp);
+        }
+        else if(file[i].mode[3] == 'x'){
+            char pre[256]="\x1b[0m\x1b[01;32m";
+            char post[256]="\x1b[0m";
+
+            char *temp = strcat(pre,file[i].name);
+            strcat(temp, post);
+            strcpy(file[i].name,temp);
+        }
+
+        
+    }
+
+
+}
+
 void filename(myfile file[],int count){
 	if(filetype_flag)filename_filetype(file,count);
 	if(Q_flag)filename_Q(file,count);
 	if(F_flag)filename_F(file,count);
 	if(N_flag)filename_N(file,count);
 	if(p_flag)filename_p(file,count);
+    if(flag_2){add_color(file,count);}
 }
 #endif

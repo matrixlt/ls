@@ -3,7 +3,7 @@
 #include <dirent.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <unistd.h>
+
 int INISIZE_DIR = 100;
 
 
@@ -58,8 +58,8 @@ void R_fun(myfile file[],char*** testdir){
         printf("\n%s:\n",(*testdir)[i]);
         myfile *file_R = (myfile*)malloc(INISIZE*sizeof(myfile));
         get_file((*testdir)[i],&file_R);
-        sort(file_R, count_2);
-        filename(file_R,count_2);
+        sort(file_R, count);
+        filename(file_R,count);
         display(file_R);
         }
         

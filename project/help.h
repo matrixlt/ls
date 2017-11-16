@@ -73,6 +73,7 @@ void help() {
 	
 	printf("特殊命令\n");
 	fputs("\
+			-R, --recursive            list subdirectories recursively\n\
 			--help\n\
 					display this help and exit\n\
 			--version\n\
