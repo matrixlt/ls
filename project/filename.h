@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "get_opt.h"
+#include "flags.h"
 #include "get_file.h"
 
 #ifndef FILENAME
@@ -93,6 +93,6 @@ void filename(myfile file[],int count){
 	if(F_flag)filename_F(file,count);
 	if(N_flag)filename_N(file,count);
 	if(p_flag)filename_p(file,count);
-    if(flag_2){add_color(file,count);}
+    if(color_flag){add_color(file,count);}
 }
 #endif

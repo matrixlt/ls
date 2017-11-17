@@ -4,9 +4,10 @@
 #include <string.h>
 #include <sys/stat.h>
 
+
 int INISIZE_DIR = 100;
 
-
+//get all dir name in the testdir
 void get_dir(myfile file[] ,int *count_2,char*** testdir){
     for(int i=0;i<count;i++)
 {
@@ -45,7 +46,7 @@ void get_dir(myfile file[] ,int *count_2,char*** testdir){
 
 void R_fun(myfile file[],char*** testdir){
     printf("%s:\n",file[0].inwhat);
-    display(file);
+    display(file,count);
     if(R_flag){
         
         int count_2=0;
@@ -60,7 +61,8 @@ void R_fun(myfile file[],char*** testdir){
         get_file((*testdir)[i],&file_R);
         sort(file_R, count);
         filename(file_R,count);
-        display(file_R);
+        display(file_R,count);
+
         }
         
     }

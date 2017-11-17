@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "get_file.h"
 #include "help.h"
@@ -8,7 +9,7 @@
 #ifndef DISPLAY
 #define DISPLAY
 
-void display(myfile file[])
+void display(myfile file[], int count)
 {
     //show version and return
     if(version_flag)
@@ -41,18 +42,10 @@ void display(myfile file[])
         
         //show the size of the file
         if(s_flag)
-        printf("%5ld ",file[i].size);
+        printf("%5ld ",file[i].size/1024);
 
         //show mode of the file       
-        //printf("%s ",file[i].mode);
-        int len=strlen(file[i].mode);
-        for(int j=0;j<len;j++){
-            if(file[i].mode[j]=='-' || file[i].mode[j]=='d'
-            ||file[i].mode[j]=='r'||file[i].mode[j]=='w'
-            ||file[i].mode[j]=='x')
-            printf("%c",file[i].mode[j]);
-        }
-        printf("  ");
+        printf("%s ",file[i].mode);
         
 
         //show the number of hard links
@@ -78,18 +71,49 @@ void display(myfile file[])
     
         }
 
+
+        //show the author of the file
+        if(author_flag)
+        printf("%s ",file[i].u_name);
+        
         //show the size of the file
-        if(R_flag==0)
+        if(human_readable){
+            printf("%4.1fk ",file[i].size/1024.0);
+        }else if(si_flag){
+            printf("%4.1fk ",file[i].size/1000.0);
+        }else if(kibibytes){
+            printf("%4.1fk ",file[i].size/1024.0);
+        }else 
         printf("%5ld ",file[i].size);
 
         //show time of the file
-        printf("%2d月 %2d %02d:%02d ",file[i].time.tm_mon+1,file[i].time.tm_mday,file[i].time.tm_hour,file[i].time.tm_min);
+        struct tm printime;
+        if(time_flag == 1)
+        {
+            printime = file[i].a_time;
+        }else if(time_flag == 2){
+            printime = file[i].c_time;
+        }else printime = file[i].time;
+        
+        if(time_style == 1)
+        {
+            printf("%2d-%2d %02d:%02d ",printime.tm_mon+1,printime.tm_mday,printime.tm_hour,printime.tm_min);
+        }else if(time_style == 2){
+            printf("%4d-%2d-%2d %02d:%02d ",printime.tm_year+1900,printime.tm_mon+1,printime.tm_mday,printime.tm_hour,printime.tm_min);
+        }else 
+        printf("%2d月 %2d %02d:%02d ",printime.tm_mon+1,printime.tm_mday,printime.tm_hour,printime.tm_min);
         
         
         //show the name of the file
         printf("%s\n",file[i].name);
-            
 
+
+
+        if(slow != 0)  
+        {
+        //printf("%d\n",slow);  
+            usleep(1000*slow);
+        }
 
     }
     }
@@ -104,12 +128,25 @@ void display(myfile file[])
 
         //show the size of the file
         if(s_flag)
+        if(human_readable){
+            printf("%4.1fk ",file[i].size/1024.0);
+        }else if(si_flag){
+            printf("%4.1fk ",file[i].size/1000.0);
+        }else if(kibibytes){
+            printf("%4.1fk ",file[i].size/1024.0);
+        }else 
         printf("%5ld ",file[i].size);
 
 
         //show the name of the file
         printf("%s  ",file[i].name);
 
+        
+        if(slow != 0)  
+        {
+        //printf("%d\n",slow);  
+            usleep(1000*slow);
+        }
     }
        printf("\n");
        

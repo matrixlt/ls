@@ -3,7 +3,7 @@
 #include <string.h>
 
 #include "get_file.h"
-#include "get_opt.h"
+#include "flags.h"
 
 #ifndef SORT
 #define SORT
@@ -78,7 +78,7 @@
  void sort_X(myfile file[],int number){
     int i,j,x;
     myfile temp;
-    char EntryExtension[count][256];
+    char EntryExtension[number][256];
     for(i=0;i<number;i++){
         for(j=0;file[i].name[j]!='.';j++)
             ;

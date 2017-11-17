@@ -12,8 +12,9 @@
 
 int main(int argc ,char*argv[]){
 
-    myfile *file = (myfile*)malloc(INISIZE*sizeof(myfile));
     get_opt(argc,argv);
+
+    myfile *file = (myfile*)malloc(INISIZE*sizeof(myfile));
 
     if(optind == argc)//default
         {
@@ -31,7 +32,7 @@ int main(int argc ,char*argv[]){
             {    
                 sort(file,count);
                 filename(file,count);
-                display(file);    
+                display(file,count);    
             }
         }
 
@@ -53,7 +54,7 @@ int main(int argc ,char*argv[]){
                     printf("%s:\n",argv[i]);
                     sort(file,count);
                     filename(file,count);
-                    display(file);
+                    display(file,count);
                     printf("\n");
                 }
             }
@@ -74,7 +75,7 @@ int main(int argc ,char*argv[]){
                 {
                     sort(file,count);
                     filename(file,count);
-                    display(file);
+                    display(file,count);
                 }
             }
             else printf("%s is invalid\n",argv[i]);

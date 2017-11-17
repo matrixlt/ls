@@ -11,4 +11,5 @@ display.h
 filename.h 
 help.h 
 get_dir_R.h
+flags.h
 )
