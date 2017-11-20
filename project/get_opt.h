@@ -15,7 +15,7 @@ struct option opts[]={
 {"inode",0,NULL,'i'},
 {"size",0,NULL,'s'},
 {"color", required_argument, NULL, '2'},
-{"grout-directories-first",0,&GroupDirectoriesFirst_flag,1},
+{"group-directories-first",0,&GroupDirectoriesFirst_flag,1},
 {"sort",1,NULL,'8'},
 {"file-type",0,&filetype_flag,1},
 {"indicator-style",1,NULL,'7'},

@@ -27,9 +27,12 @@ typedef struct {
 
     char  mode[11];
     int   isSLink;
-    long  int last_changed; 
-    long  int sec;
     long  int size;
+
+    long  int sec;//time
+    long  int last_changed;//c_time    
+    long  int access_time;//a_time
+   
     struct tm time;
     struct tm a_time;
     struct tm c_time;
@@ -126,9 +129,6 @@ int get_file( char file_path[],myfile **file){
         else str1[9]='-';  
 
         
-        struct tm *time1 = localtime(&file1.st_mtime);
-        struct tm *time2 = localtime(&file1.st_ctime);
-        struct tm *time3 = localtime(&file1.st_atime);
 
         strcpy((*file)[count].name,str);
         strcpy((*file)[count].mode,str1);
@@ -138,14 +138,16 @@ int get_file( char file_path[],myfile **file){
         (*file)[count].size=file1.st_size;
         (*file)[count].hlink=file1.st_nlink;
 
-        (*file)[count].time=*time1;
-        (*file)[count].c_time=*time2;
-        (*file)[count].a_time=*time3;
+        (*file)[count].time=*localtime(&file1.st_mtime);
+        (*file)[count].c_time=*localtime(&file1.st_ctime);
+        (*file)[count].a_time=*localtime(&file1.st_atime);
 
         (*file)[count].inode=file1.st_ino;
         (*file)[count].isSLink=S_ISLNK(file1.st_mode);
+
         (*file)[count].sec=file1.st_mtime;
         (*file)[count].last_changed=file1.st_ctime;
+        (*file)[count].access_time=file1.st_atime;
 
         
         strcpy((*file)[count].u_name,getpwuid(file1.st_uid)->pw_name);

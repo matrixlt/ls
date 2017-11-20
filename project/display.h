@@ -91,10 +91,18 @@ void display(myfile file[], int count)
         if(time_flag == 1)
         {
             printime = file[i].a_time;
-        }else if(time_flag == 2){
+        }
+        else if(time_flag == 2)
+        {
             printime = file[i].c_time;
-        }else printime = file[i].time;
+        }
+        else printime = file[i].time;
         
+
+        // printf("%ld %ld %ld \n",file[i].sec,file[i].access_time,file[i].last_changed);
+        // printf("%d %d %d \n",file[i].time.tm_min,file[i].a_time.tm_min,file[i].c_time.tm_min);
+
+
         if(time_style == 1)
         {
             printf("%2d-%2d %02d:%02d ",printime.tm_mon+1,printime.tm_mday,printime.tm_hour,printime.tm_min);
