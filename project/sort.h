@@ -35,45 +35,7 @@
      return;
  }//GroupDirectoriesFirst
  
-//  void sort_t(myfile file[],int number){
-//     myfile temp;
-//     int i,j;
-//     for(i=0;i<number;++i){
-//     for(j=i+1;j<number;++j){
-//         if(file[i].sec<file[j].sec){
-//         temp=file[i];
-//         file[i]=file[j];
-//         file[j]=temp;}
-//         }
-//     }
-//  }//sort by modification time ,newest first
- 
-//  void sort_c(myfile file[],int number){
-//     myfile temp;
-//     int i,j;
-//     if(l_flag==1&&t_flag==0){
-//          for(i=0;i<number;++i){
-//             for(j=i+1;j<number;++j){
-//                 if(strcasecmp(file[i].name,file[j].name) > 0){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//                 }
-//             }
-//         } //sort by name
-//     }
-//     else{
-//         for(i=0;i<number;++i){
-//             for(j=i+1;j<number;++j){
-//                 if(file[i].last_changed<file[j].last_changed){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//                 }
-//             }
-//         }
-//     }
-//  }//sort by ctime
+
 
  void sort_X(myfile file[],int number){
     
@@ -91,16 +53,11 @@
             }
         }
 
-
         int x;
         for(x = 0;file[i].name[j]!='\0';x++,j++)
         {
             EntryExtension[i][x]=file[i].name[j];
         }
-        // if(x==0){
-        //     EntryExtension[i][x]=' ';
-        //     EntryExtension[i][x+1]='\0';
-        // }else EntryExtension[i][x]='\0';
         
         
         EntryExtension[i][x]='\0';
@@ -116,10 +73,6 @@
          if( strcasecmp(EntryExtension[why],EntryExtension[j]) > 0 )
             {
            
-            // for(int f=0;f<count ;f++)
-            // {printf("%s    ",file[f].name );}
-        
-            //printf("\n %d %d %d",why,j,number);
 
             temp=file[why];
             file[why]=file[j];
@@ -135,65 +88,6 @@
     }
 }//sort by entry extension(扩展名）
 
-//void sort_U(myfile file[],int number){}//按原始顺序排列
-
-// void sort_u(myfile file[],int number){
-//     myfile temp;
-//     if(l_flag==1&&t_flag==0){
-//     for(int i=0;i<number;++i){
-//             for(int j=i+1;j<number;++j){
-//                 if(file[i].name[0]<file[j].name[0]){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//                 }
-//             }
-//         } 
-//     }
-//     else{sort_t(file,number);}
-//}//sort by acess time
-
-// void sort_S(myfile file[],int number){
-//     myfile temp;
-//     for(int i=0;i<number;++i){
-//             for(int j=i+1;j<number;++j){
-//                 if(file[i].size<file[j].size){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//                 }
-//             }
-//         } 
-// }// sort by size 
-
-// void sort_v(myfile file[],int number){
-//     myfile temp;
-//     for(int i=0;i<number;++i){
-//             for(int j=i+1;j<number;++j){
-//                 if(file[i].size>file[j].size){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//                 }
-//             }
-//         }
-// }//natural sort of size
-
-// void default_sort(myfile file[],int count){
-//     myfile temp;
-//     int i,j;
-    
-//     for(i=0;i<count;++i){
-//         for(j=i+1;j<count;++j){
-//             if(strcasecmp(file[i].name,file[j].name) > 0){
-//                 temp=file[i];
-//                 file[i]=file[j];
-//                 file[j]=temp;
-//             }
-//         }
-//     } //sort by name
-    
-// }
 
 
 void sort(myfile file[],int count)
@@ -259,26 +153,11 @@ for(int i=0;i<count;++i){
     }
 }
 
-
-//    default_sort(file,count);
-   
-   
-//    if(t_flag){sort_t(file,count);}
-   
-//    if(c_flag){sort_c(file,count);}
    
     if(X_flag){sort_X(file,count);}
    
     if(GroupDirectoriesFirst_flag){sort_GroupDirectoriesFirst(file,count);}
    
-//    if(U_flag){sort_U(file,count);}
-   
-//    if(u_flag){sort_u(file,count);} //wrong function 
-   
-//    if(S_flag){sort_S(file,count);}
-   
-//    if(v_flag){sort_v(file,count);} //wrong function
-
     if(r_flag){sort_r(file,count);}
 }
 #endif

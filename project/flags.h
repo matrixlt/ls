@@ -47,4 +47,6 @@ int human_readable=0;
 int si_flag=0;
 int kibibytes=0;
 
+
+int f_flag = 0;
 #endif

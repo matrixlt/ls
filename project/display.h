@@ -88,11 +88,11 @@ void display(myfile file[], int count)
 
         //show time of the file
         struct tm printime;
-        if(time_flag == 1)
+        if(time_flag == 1 || u_flag == 1)
         {
             printime = file[i].a_time;
         }
-        else if(time_flag == 2)
+        else if(time_flag == 2 || c_flag == 1)
         {
             printime = file[i].c_time;
         }
@@ -103,7 +103,7 @@ void display(myfile file[], int count)
         // printf("%d %d %d \n",file[i].time.tm_min,file[i].a_time.tm_min,file[i].c_time.tm_min);
 
 
-        if(time_style == 1)
+        if(time_style == 1 )
         {
             printf("%2d-%2d %02d:%02d ",printime.tm_mon+1,printime.tm_mday,printime.tm_hour,printime.tm_min);
         }else if(time_style == 2){

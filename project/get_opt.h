@@ -36,7 +36,7 @@ struct option opts[]={
 
 void get_opt(int argc,char*argv[]){
     int c;
-    while((c = getopt_long(argc,argv,"lgGnoisRrtcXUuSvaABFpQNhk",opts,NULL) ) !=-1){
+    while((c = getopt_long(argc,argv,"lgGnoisRrtcXUuSvaABFpQNhkf",opts,NULL) ) !=-1){
         switch(c){
             //-l in different type
             case 'l': l_flag=1;
@@ -141,11 +141,21 @@ void get_opt(int argc,char*argv[]){
             case '4':slow = atoi(optarg);
             break;
 
-            
+            case 'f':f_flag = 1;
+            break;
+
 
             
             default : break; 
         }
+    }
+        if(f_flag){
+        a_flag = 1;
+        U_flag =1;
+        color_flag = 0;
+        l_flag = 0;
+        s_flag = 0;
+
     }   
 }
 

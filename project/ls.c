@@ -12,8 +12,7 @@
 
 int main(int argc ,char*argv[]){
 
-    get_opt(argc,argv);
-
+    get_opt(argc,argv); 
     myfile *file = (myfile*)malloc(INISIZE*sizeof(myfile));
 
     if(optind == argc)//default
