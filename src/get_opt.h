@@ -149,14 +149,20 @@ void get_opt(int argc,char*argv[]){
             default : break; 
         }
     }
-        if(f_flag){
+        
+    if(f_flag)
+    {
         a_flag = 1;
         U_flag =1;
         color_flag = 0;
         l_flag = 0;
         s_flag = 0;
 
-    }   
+    }  
+    
+    //-Gl == -o
+    if(G_flag && l_flag)
+    o_flag=1;
 }
 
 #endif

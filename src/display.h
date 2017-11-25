@@ -25,9 +25,7 @@ void display(myfile file[], int count)
         return;
     }
     
-    //-Gl == -o
-    if(G_flag && l_flag)
-    o_flag=1;
+    
 
 
     if(l_flag || g_flag || n_flag || o_flag)
