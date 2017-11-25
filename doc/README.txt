@@ -44,8 +44,8 @@ man_ls_classfied.txt是将ls选项分类后的帮助文档
 README.txt是本项目的简明文档
 
 
-项目GitHub地址 http://github.com/matrixlt/ls
-
-作者
-王年翼   马钻杰
-邓宇彤   任姚丹珺
+others说明
+for_test是测试用例
+ls_src.c是原版ls的源代码
+simptest.c是打印出当前目录所有文件名的小程序
+testgetopt.c是用来学习和测试getopt用法的小程序
