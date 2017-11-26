@@ -30,13 +30,16 @@ struct option opts[]={
 {"si",0,&si_flag,1},
 {"kibibytes",0,&kibibytes,1},
 
-{"slow",1,NULL,'4'}
+{"slow",1,NULL,'4'},
+{NULL,0,NULL,0}
 };
 
 
 void get_opt(int argc,char*argv[]){
     int c;
-    while((c = getopt_long(argc,argv,"lgGnoisRrtcXUuSvaABFpQNhkf",opts,NULL) ) !=-1){
+    while( (c = getopt_long(argc,argv,"lgGnoisRrtcXUuSvaABFpQNhkf",opts,NULL)) != -1)
+    {
+        printf("%d\n",c);
         switch(c){
             //-l in different type
             case 'l': l_flag=1;

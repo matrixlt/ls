@@ -7,18 +7,19 @@
 #define FILENAME
 
 void filename_F(myfile file[],int count){
-    int i,j,x;
-    char EntryExtension[count][256];
-    for(i=0;i<count;i++){
-        for(j=0;file[i].name[j]!='.';j++);
-        for(x=0;file[i].name[j]!='\0';x++,j++){
-            EntryExtension[i][x]=file[i].name[j];
-        }
-    }//get entryExtension
-    for(i=0;i<count;i++){
+    // int i,j,x;
+    // char EntryExtension[count][256];
+    // for(i=0;i<count;i++){
+    //     for(j=0;file[i].name[j]!='.';j++);
+    //     for(x=0;file[i].name[j]!='\0';x++,j++){
+    //         EntryExtension[i][x]=file[i].name[j];
+    //     }
+    // }//get entryExtension
+    for(int i=0;i<count;i++){
         if(file[i].mode[0]=='d')
             strcat(file[i].name,"/");
-        else if(EntryExtension[i][1]=='\0')
+        //else if(EntryExtension[i][1]=='\0')
+        else if(file[i].mode[3] == 'x')
             strcat(file[i].name,"*");
         if(file[i].isSLink==1)
             strcat(file[i].name,"@");
@@ -89,10 +90,13 @@ void add_color(myfile file[], int count){
 
 void filename(myfile file[],int count){
 	if(filetype_flag)filename_filetype(file,count);
-	if(Q_flag)filename_Q(file,count);
+    if(Q_flag)filename_Q(file,count);
+    
+    if(color_flag){add_color(file,count);}
+    
 	if(F_flag)filename_F(file,count);
 	if(N_flag)filename_N(file,count);
 	if(p_flag)filename_p(file,count);
-    if(color_flag){add_color(file,count);}
+    
 }
 #endif
